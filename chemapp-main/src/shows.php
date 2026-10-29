@@ -100,3 +100,16 @@ function insert_show(PDO $pdo, array $show, ?int $id = null): int
     $query->execute($values);
     return $id ?? (int) $pdo->lastInsertId();
 }
+
+function update_show(PDO $pdo, int $id, array $show): void
+{
+    $query = $pdo->prepare('UPDATE shows SET name = ?, date = ?, latitude = ?, longitude = ?, link_ticket = ?, link_img = ? WHERE id = ?');
+    $query->execute([$show['name'], $show['date'], $show['latitude'], $show['longitude'], $show['link_ticket'], $show['link_img'], $id]);
+}
+
+function delete_show(PDO $pdo, int $id): bool
+{
+    $query = $pdo->prepare('DELETE FROM shows WHERE id = ?');
+    $query->execute([$id]);
+    return $query->rowCount() === 1;
+}

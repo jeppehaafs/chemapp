@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const markers = L.markerClusterGroup();
     const markerById = new Map();
+    const showIcon = L.icon({
+        iconUrl: container.dataset.markerIcon,
+        iconSize: [36, 42],
+        // Anchor the visible pick tip; the image has a small transparent margin.
+        iconAnchor: [18, 40],
+        popupAnchor: [0, -38]
+    });
     const shows = JSON.parse(document.getElementById('shows-data').textContent);
     function safeUrl(value) {
         try {
@@ -45,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.textContent = 'Buy tickets';
             popup.append(link);
         }
-        const marker = L.marker([show.latitude, show.longitude]).bindPopup(popup);
+        const marker = L.marker([show.latitude, show.longitude], {icon: showIcon, title: show.name, alt: show.name}).bindPopup(popup);
         markerById.set(String(show.id), marker);
         markers.addLayer(marker);
     });

@@ -61,7 +61,8 @@ function base_path(): string
 {
     $configured = app_config()['base_path'];
     $path = $configured ?? str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/index.php'));
-    return $path === '/' || $path === '.' ? '' : '/' . trim($path, '/');
+    $path = trim($path, '/');
+    return $path === '' || $path === '.' ? '' : '/' . $path;
 }
 
 function asset(string $filename): string

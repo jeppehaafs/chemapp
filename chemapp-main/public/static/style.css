@@ -576,3 +576,10 @@ body {
 .page-message { color: #eee; padding: 2rem; }
 .show-detail { max-width: 800px; margin: 2rem auto; color: #eee; padding: 1rem; }
 .show-detail img { max-width: 100%; height: auto; }
+.tour-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 20px; color: #e8f45c; background: #13161a; }
+.tour-periods { display: flex; flex-wrap: wrap; gap: 8px; }
+.tour-period { display: inline-block; padding: 10px 16px; border: 1px solid #e8f45c; border-radius: 6px; color: #e8f45c; font-weight: 600; }
+.tour-period:hover, .tour-period:focus { color: #fff; text-decoration: none; }
+.tour-period.selected { background: #e8f45c; color: #13161a; }
+.tour-tools a:focus-visible { outline: 3px solid #00ffe5; outline-offset: 3px; }
+.tour-tools > a, .tour-tools > a:hover, .tour-tools > a:focus, .tour-tools > a:active, .tour-tools > a:visited { color: #13161a; text-decoration: none; }
